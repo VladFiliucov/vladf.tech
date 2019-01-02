@@ -2,10 +2,24 @@ import React from "react"
 import { graphql, Link } from 'gatsby';
 
 const AllTagsTemplate = ({data, pageContext}) => {
+  const { tags } = pageContext;
+
   return (
     <div>
       <div>
-        all tags here
+        <ul>
+          {
+            tags.map((tagName, index) => {
+              return (
+                <li key={`tag-${index}`}>
+                  <Link to={`/tags/${tagName}`} >
+                    {tagName}
+                  </Link>
+                </li>
+              )
+            })
+          }
+        </ul>
       </div>
     </div>
   )

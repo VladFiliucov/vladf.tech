@@ -1,11 +1,27 @@
 import React from "react"
 import { graphql, Link } from 'gatsby';
 
-const SingleTagTemplate = ({data}) => {
+const SingleTagTemplate = ({data, pageContext}) => {
+  const { posts, tagName } = pageContext
   return (
     <div>
       <div>
-        single tag here
+        Posts about {`${tagName}`}
+      </div>
+      <div>
+        <ul>
+          {
+            posts.map((post, index) => {
+              return (
+                <li key={`post-${index}`}>
+                  <Link to={post.frontmatter.path}>
+                    {post.frontmatter.title}
+                  </Link>
+                </li>
+              )
+            })
+          }
+        </ul>
       </div>
     </div>
   )

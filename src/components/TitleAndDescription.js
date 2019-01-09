@@ -11,9 +11,8 @@ const TitleAndDescription = ({ data }) => {
     <div>
       <Header>
         <Link to='/' >
-          <h2>{title}</h2>
+          <span>{title}</span>
         </Link>
-        <p>{description}</p>
       </Header>
     </div>
   );

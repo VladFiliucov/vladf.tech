@@ -1,7 +1,6 @@
 import React from "react"
 import Header from '../components/Header';
 import { graphql, Link } from 'gatsby';
-// import 'antd/dist/antd.css';
 
 const Layout = ({data}) => {
   const { edges } = data.allMarkdownRemark;

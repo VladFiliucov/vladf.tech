@@ -22,8 +22,10 @@ nav {
 
 .logo {
   grid-area: logo;
-  width: 2.2rem;
   margin: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: left;
 }
 
 .l1 {
@@ -34,7 +36,6 @@ nav {
 
 .l2 {
   grid-area: l2;
-  width: 2.2rem;
   margin: 2em;
 }
 
@@ -42,4 +43,10 @@ nav {
   grid-area: l3;
   width: 2.2rem;
   margin: 2em;
+}
+
+.pagetitlelink {
+  text-decoration: none;
+  color: #fff;
+  font-size: 26px;
 }

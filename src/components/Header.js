@@ -5,7 +5,7 @@ import './Header.css';
 
 const logoStyles = {
   width: '2.2rem',
-  margin: '2em'
+  margin: '2em',
 }
 
 const headerStyles = {
@@ -19,7 +19,14 @@ const Header = ({ data }) => {
     <header>
       <nav>
         <div className="logo">
-          <img style={logoStyles} src={letterV} alt="Vlad Filiucov logo" />
+          <Link to='/'>
+            <img style={logoStyles} src={letterV} alt="Vlad Filiucov logo" />
+          </Link>
+          <Link to='/' className='pagetitlelink'>
+            <span>
+              VLADF
+            </span>
+          </Link>
         </div>
         <div className='l1'>
           <a href="/html/">HTML</a>
@@ -27,9 +34,9 @@ const Header = ({ data }) => {
         <Link to='/' className="l2">
           About me
         </Link>
-        <div className='l3'>
-          <a href="/js/">JavaScript</a>
-        </div>
+        <Link to='/tags' className="l3">
+          Tags
+        </Link>
       </nav>
     </header>
   );

@@ -1,8 +1,8 @@
 import React from 'react';
-import TitleAndDescription from './TitleAndDescription';
+import Header from './Header';
 import { StaticQuery, graphql } from 'gatsby';
 
-const Header = () => {
+const HeaderContainer = () => {
   return (
     <StaticQuery
       query={graphql`
@@ -16,11 +16,11 @@ const Header = () => {
         }
       `}
       render={
-        data => <TitleAndDescription data={data} />
+        data => <Header data={data} />
       }
     />
   );
 }
 
-export default Header;
+export default HeaderContainer;
 

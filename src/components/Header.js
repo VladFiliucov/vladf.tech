@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import letterV from '../../images/letter-v.svg';
-import './TitleAndDescription.css';
+import './Header.css';
 
 const logoStyles = {
   width: '2.2rem',

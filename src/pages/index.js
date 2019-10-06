@@ -1,6 +1,6 @@
 import React from "react"
 import { Helmet } from 'react-helmet';
-import Header from '../components/Header';
+import HeaderContainer from '../components/HeaderContainer';
 import { graphql, Link } from 'gatsby';
 import './home.css';
 
@@ -14,7 +14,7 @@ const Layout = ({data}) => {
         <link rel="canonical" href="http://vladf.tech" />
       </Helmet>
       <div className='main-container'>
-        <Header />
+        <HeaderContainer />
           <section>
             {edges.map(edge => {
               const { frontmatter } = edge.node;

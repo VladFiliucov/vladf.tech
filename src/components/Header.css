@@ -1,0 +1,38 @@
+header {
+  background: rgb(217,204,29);
+  background: linear-gradient(90deg, rgba(217,204,29,1) 42%, rgba(0,212,255,1) 100%);
+}
+
+nav {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: 4fr 1fr 1fr 1fr;
+}
+
+.logo {
+  /* margin: 2em; */
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.pagetitlelink {
+  /* text-decoration: none; */
+  /* color: #fff; */
+  /* font-size: 26px; */
+}
+
+.nav-item {
+  text-decoration: none;
+  color: #fff;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+@media (min-width: 700px) {
+  nav {
+  }
+}
+

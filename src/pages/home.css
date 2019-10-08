@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+}
+
+.main-container {
+  display: grid;
+  grid-gap: 5px;
+  height: 100vh;
+  grid-template-rows: 3fr 3fr 1fr;
+}
+
+footer {
+  background-color: blue;
+}
+
+section {
+  display: grid;
+  grid-template-columns: 100%;
+  justify-content: space-evenly;
+  grid-gap: 13px;
+}
+
+.postcard {
+  background: pink;
+}
+
+@media (min-width: 700px) {
+  .main-container {
+    min-height: 100%;
+  }
+
+  section {
+    grid-template-columns: 60%;
+  }
+}
+

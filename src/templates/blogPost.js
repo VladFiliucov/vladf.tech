@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 
-import Header from '../components/Header';
+import HeaderContainer from '../components/HeaderContainer';
 
 const Template = ({ data, pageContext }) => {
   const { prev, next } = pageContext;
@@ -11,7 +11,7 @@ const Template = ({ data, pageContext }) => {
 
   return (
     <div>
-      <Header />
+      <HeaderContainer />
       <h1>{title}</h1>
       <div className="blogpost"
         dangerouslySetInnerHTML={{__html: html}}

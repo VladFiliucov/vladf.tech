@@ -5,36 +5,32 @@ body {
 .main-container {
   display: grid;
   grid-gap: 5px;
-  min-height: 100%;
-  grid-template-areas:
-    "header header header header"
-    "aside aside aside aside"
-    "section section section section"
-    "footer footer footer footer";
+  height: 100vh;
+  grid-template-rows: 3fr 3fr 1fr;
+}
+
+footer {
+  background-color: blue;
+}
+
+section {
+  display: grid;
+  grid-template-columns: 100%;
+  justify-content: space-evenly;
+  grid-gap: 13px;
+}
+
+.postcard {
+  background: pink;
 }
 
 @media (min-width: 700px) {
   .main-container {
     min-height: 100%;
-    grid-template-areas:
-      "header header header header"
-      "section section section aside"
-      "footer footer footer footer";
+  }
+
+  section {
+    grid-template-columns: 60%;
   }
 }
 
-header {
-  grid-area: header;
-}
-
-section {
-  grid-area: section;
-}
-
-aside {
-  grid-area: aside;
-}
-
-footer {
-  grid-area: footer;
-}

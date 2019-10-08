@@ -15,26 +15,21 @@ const Layout = ({data}) => {
       </Helmet>
       <div className='main-container'>
         <HeaderContainer />
-          <section>
-            {edges.map(edge => {
-              const { frontmatter } = edge.node;
+        <section>
+          {edges.map(edge => {
+            const { frontmatter } = edge.node;
 
-              return (
-                <div key={frontmatter.path}>
-                  {
-                    <Link to={frontmatter.path} >
-                      {frontmatter.title}
-                    </Link>
-                  }
-                </div>
-              );
-            })}
-          </section>
-        <aside>
-          <Link to='/tags' >
-            Browse tags
-          </Link>
-        </aside>
+            return (
+              <div className='postcard' key={frontmatter.path}>
+                {
+                  <Link to={frontmatter.path} >
+                    {frontmatter.title}
+                  </Link>
+                }
+              </div>
+            );
+          })}
+        </section>
         <footer>Footer</footer>
       </div>
     </>

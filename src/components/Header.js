@@ -18,24 +18,24 @@ const Header = ({ data }) => {
   return (
     <header>
       <nav>
-        <div className="logo">
+        <div className="logo nav-item">
           <Link to='/'>
             <img style={logoStyles} src={letterV} alt="Vlad Filiucov logo" />
           </Link>
-          <Link to='/' className='pagetitlelink'>
+          <Link to='/' className='pagetitlelink nav-item'>
             <span>
               VLADF
             </span>
           </Link>
         </div>
-        <div className='l1'>
-          <a href="/html/">HTML</a>
-        </div>
-        <Link to='/' className="l2">
+        <Link to='/' className="nav-item">
           About me
         </Link>
-        <Link to='/tags' className="l3">
+        <Link to='/tags' className="nav-item">
           Tags
+        </Link>
+        <Link to='/portfolio' className="nav-item">
+          Portfolio
         </Link>
       </nav>
     </header>

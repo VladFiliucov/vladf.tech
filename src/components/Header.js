@@ -3,11 +3,6 @@ import { Link } from 'gatsby';
 import letterV from '../../images/letter-v.svg';
 import './Header.css';
 
-const logoStyles = {
-  width: '2.2rem',
-  margin: '1em 2em',
-}
-
 const Header = ({ data }) => {
   const { title, description } = data.site.siteMetadata;
 
@@ -16,7 +11,7 @@ const Header = ({ data }) => {
       <nav>
         <div className="logo nav-item">
           <Link to='/'>
-            <img style={logoStyles} src={letterV} alt="Vlad Filiucov logo" />
+            <img src={letterV} alt="Vlad Filiucov logo" />
           </Link>
           <Link to='/' className='pagetitlelink'>
             <span>

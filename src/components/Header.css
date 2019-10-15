@@ -6,7 +6,8 @@ header {
 nav {
   display: grid;
   grid-gap: 5px;
-  grid-template-columns: 4fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
+  padding-bottom: 25px;
 }
 
 .logo {
@@ -17,22 +18,29 @@ nav {
 }
 
 .pagetitlelink {
+  display: none;
   /* text-decoration: none; */
   /* color: #fff; */
   /* font-size: 26px; */
 }
 
 .nav-item {
-  text-decoration: none;
-  color: #fff;
   font-size: 26px;
   display: flex;
-  align-items: center;
-  justify-content: left;
+  padding: 2px;
+  /* align-items: center; */
+  /* text-align: center; */
 }
 
-@media (min-width: 700px) {
-  nav {
-  }
+.nav-item > a {
+  text-decoration: none;
+  color: #fff;
+  margin: 0 auto;
 }
+
+/* @media (min-width: 700px) { */
+/*   nav { */
+/*     grid-template-columns: 4fr 1fr 1fr 1fr; */
+/*   } */
+/* } */
 

@@ -35,6 +35,7 @@ const Header = ({ data }) => {
           </Link>
         </div>
       </nav>
+      <h1>Tech journey to senior engineer</h1>
     </header>
   );
 };

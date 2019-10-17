@@ -5,10 +5,6 @@
   grid-template-rows: 2fr 3fr 1fr;
 }
 
-footer {
-  background-color: blue;
-}
-
 section {
   display: grid;
   grid-template-columns: 100%;

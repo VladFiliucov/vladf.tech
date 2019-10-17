@@ -1,6 +1,7 @@
 import React from "react"
 import { Helmet } from 'react-helmet';
 import HeaderContainer from '../components/HeaderContainer';
+import Footer from '../components/Footer';
 import { graphql, Link } from 'gatsby';
 import './home.css';
 
@@ -30,7 +31,7 @@ const Layout = ({data}) => {
             );
           })}
         </section>
-        <footer>Footer</footer>
+        <Footer />
       </div>
     </>
   )

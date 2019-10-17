@@ -2,7 +2,8 @@ import React from "react"
 import { Helmet } from 'react-helmet';
 import HeaderContainer from '../components/HeaderContainer';
 import Footer from '../components/Footer';
-import { graphql, Link } from 'gatsby';
+import Card from '../components/Card';
+import { graphql } from 'gatsby';
 import './home.css';
 
 const Layout = ({data}) => {
@@ -21,14 +22,11 @@ const Layout = ({data}) => {
             const { frontmatter } = edge.node;
 
             return (
-              <div className='postcard' key={frontmatter.path}>
-                {
-                  <Link to={frontmatter.path} >
-                    {frontmatter.title}
-                  </Link>
-                }
-              </div>
-            );
+              <Card
+                data={frontmatter}
+                key={frontmatter.path}
+              />
+            )
           })}
         </section>
         <Footer />

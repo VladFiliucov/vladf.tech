@@ -12,10 +12,6 @@ section {
   grid-gap: 13px;
 }
 
-.postcard {
-  background: pink;
-}
-
 @media (min-width: 768px) {
   .main-container {
     min-height: 100%;

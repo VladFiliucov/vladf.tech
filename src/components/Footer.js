@@ -2,7 +2,11 @@ import React from 'react';
 import './Footer.css';
 
 const Footer = () => (
-  <footer>Footer</footer>
+  <footer>
+    <p>
+      &copy; Vlad Filiucov 2019
+    </p>
+  </footer>
 );
 
 export default Footer;

@@ -3,10 +3,11 @@ import { Helmet } from 'react-helmet';
 import HeaderContainer from '../components/HeaderContainer';
 import Footer from '../components/Footer';
 import Card from '../components/Card';
+import RuLayout from '../layouts/ru.js'
 import { graphql } from 'gatsby';
 import './home.css';
 
-const Layout = ({data}) => {
+export const Layout = ({data}) => {
   const { edges } = data.allMarkdownRemark;
   return (
     <>
@@ -53,4 +54,8 @@ export const query = graphql`
   }
 `
 
-export default Layout;
+const IndexPage = ({data}) => {
+  return <RuLayout data={data} />
+}
+
+export default IndexPage;

@@ -11,7 +11,7 @@ const Template = ({ data, pageContext }) => {
 
   return (
     <div>
-      <HeaderContainer />
+      { /* <HeaderContainer /> */ }
       <h1>{title}</h1>
       <div className="blogpost"
         dangerouslySetInnerHTML={{__html: html}}

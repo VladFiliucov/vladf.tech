@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './Header';
 import { StaticQuery, graphql } from 'gatsby';
 
-const HeaderContainer = () => {
+const HeaderContainer = props => {
   return (
     <StaticQuery
       query={graphql`
@@ -16,7 +16,7 @@ const HeaderContainer = () => {
         }
       `}
       render={
-        data => <Header data={data} />
+        data => <Header data={data} localeData={props} />
       }
     />
   );

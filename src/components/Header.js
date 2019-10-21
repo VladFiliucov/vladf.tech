@@ -3,17 +3,21 @@ import { Link } from 'gatsby';
 import letterV from '../../images/letter-v.svg';
 import './Header.css';
 
-const Header = ({ data }) => {
+const Header = ({ data, localeData }) => {
   const { title, description } = data.site.siteMetadata;
+  console.log(localeData);
+  const { langsMenu, homeLink } = localeData;
+  console.log(homeLink);
+  const { about, portfolio, tags, mainHeading } = localeData.messages;
 
   return (
     <header>
       <nav>
         <div className="logo nav-item">
-          <Link to='/'>
+          <Link to={homeLink} >
             <img src={letterV} alt="Vlad Filiucov logo" />
           </Link>
-          <Link to='/' className='pagetitlelink'>
+          <Link to={homeLink} className='pagetitlelink'>
             <span>
               VLADF
             </span>
@@ -21,21 +25,21 @@ const Header = ({ data }) => {
         </div>
         <div className="nav-item">
           <Link to='/' >
-            About
+            {about}
           </Link>
         </div>
         <div className="nav-item">
           <Link to='/portfolio' className="nav-item">
-            Portfolio
+            {portfolio}
           </Link>
         </div>
         <div className="nav-item">
           <Link to='/tags' className="nav-item">
-            Tags
+            {tags}
           </Link>
         </div>
       </nav>
-      <h1>Tech journey to senior engineer</h1>
+      <h1>{mainHeading}</h1>
     </header>
   );
 };

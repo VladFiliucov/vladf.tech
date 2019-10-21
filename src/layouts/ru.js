@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout } from '../pages';
+import Layout from './';
 import { addLocaleData } from 'react-intl';
 
 import 'intl';
@@ -8,9 +8,9 @@ import ru from 'react-intl/locale-data/ru';
 
 addLocaleData(ru);
 
-export default (props) => {
-  return (<Layout
+export default (props) => (
+  <Layout
     {...props}
     i18nMessages={messages}
-  />)
-};
+  />
+);

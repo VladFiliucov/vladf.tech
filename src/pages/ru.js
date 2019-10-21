@@ -1,10 +1,10 @@
 import React from "react"
-import EnLayout from '../layouts/en.js'
+import RuLayout from '../layouts/ru.js'
 
-const EnHomePage = ({data, location}) => <EnLayout data={data} location={location} />;
+const RuHomePage = ({data, location}) => <RuLayout data={data} location={location} />;
 
 export const query = graphql`
-  query EnHomepageQuery {
+  query RuHomepageQuery {
     allMarkdownRemark (
       sort: {order: DESC, fields: [frontmatter___date]}
     ) {
@@ -21,4 +21,4 @@ export const query = graphql`
   }
 `
 
-export default EnHomePage;
+export default RuHomePage;

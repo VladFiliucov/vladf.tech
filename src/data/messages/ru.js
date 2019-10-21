@@ -1,4 +1,9 @@
 module.exports = {
   'selectLanguage': 'Выберите язык',
-  'about': 'Обо мне'
+  header: {
+    about: 'Обо мне',
+    portfolio: 'Портфолио',
+    tags: 'Тэги',
+    mainHeading: 'Тех путешествие к синьер инжинеру',
+  }
 };

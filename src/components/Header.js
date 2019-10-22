@@ -1,13 +1,12 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import letterV from '../../images/letter-v.svg';
+import SelectLanguage from './SelectLanguage';
 import './Header.css';
 
 const Header = ({ data, localeData }) => {
   const { title, description } = data.site.siteMetadata;
-  console.log(localeData);
   const { langsMenu, homeLink } = localeData;
-  console.log(homeLink);
   const { about, portfolio, tags, mainHeading } = localeData.messages;
 
   return (
@@ -40,6 +39,7 @@ const Header = ({ data, localeData }) => {
         </div>
       </nav>
       <h1>{mainHeading}</h1>
+      <SelectLanguage langs={langsMenu} />
     </header>
   );
 };

@@ -88,7 +88,7 @@ nav {
   h1 {
     display: block;
     text-transform: uppercase;
-    margin-bottom: 4em;
+    /* margin-bottom: 4em; */
     font-size: 32px;
     word-spacing: 6px;
     letter-spacing: 2px;

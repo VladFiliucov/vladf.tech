@@ -1,0 +1,9 @@
+.langSelect {
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 1em;
+}
+
+.langSelect ul li {
+  margin: .5em;
+}

@@ -2,15 +2,12 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import HeaderContainer from '../components/HeaderContainer';
 import Footer from '../components/Footer';
-import Card from '../components/Card';
 import { graphql, StaticQuery } from 'gatsby';
-import { FormattedMessage, IntlProvider  } from 'react-intl';
+import { IntlProvider  } from 'react-intl';
 import { getCurrentLangKey, getLangs, getUrlForLang } from 'ptz-i18n';
 import './mainLayout.css';
 
-const Layout = ({data, location, i18nMessages}) => {
-  const { edges } = data.allMarkdownRemark;
-
+const Layout = ({location, i18nMessages, children}) => {
   return (
     <StaticQuery
       query={graphql`
@@ -30,11 +27,9 @@ const Layout = ({data, location, i18nMessages}) => {
           const url = location.pathname;
           const { langs, defaultLangKey } = data.site.siteMetadata.languages;
           const langKey = getCurrentLangKey(langs, defaultLangKey, url);
-          const homeLink = `/${langKey}`.replace(`/${defaultLangKey}/`, '/');
+          const homeLink = `/${langKey}`.replace(`/${defaultLangKey}`, '');
           const langsMenu = getLangs(langs, langKey, getUrlForLang(homeLink, url))
-            .map((item) => (
-              { ...item, link: item.link.replace(`/${defaultLangKey}/`, '/') }
-            ));
+            .map((item) => ({ ...item, link: item.link.replace(`/${defaultLangKey}/`, ''), url: url}));
 
           return (
             <IntlProvider
@@ -53,18 +48,7 @@ const Layout = ({data, location, i18nMessages}) => {
                     langsMenu={langsMenu}
                     homeLink={homeLink}
                   />
-                  <section>
-                    {edges.map(edge => {
-                      const { frontmatter } = edge.node;
-
-                      return (
-                        <Card
-                          data={frontmatter}
-                          key={frontmatter.path}
-                        />
-                      )
-                    })}
-                  </section>
+                  {children}
                   <Footer />
                 </div>
               </div>

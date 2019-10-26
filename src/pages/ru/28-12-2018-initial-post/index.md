@@ -1,12 +1,12 @@
 ---
-path: "/initial-post"
+path: "/ru/initial-post"
 date: "28/12/2018"
 title: "Initial Post"
-lang: "en"
+lang: "ru"
 tags: ['GatsbyJS', 'vladf', 'Vlad Filiucov']
 excerpt: "Wellcome to Brave New Blog"
 ---
 
-## Brave New Blog
+## Бравый новый блог
 
-Coming soon...
+Скоро на всех экранах...

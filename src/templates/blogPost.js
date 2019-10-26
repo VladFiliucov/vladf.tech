@@ -13,7 +13,7 @@ const Template = ({ data, pageContext, location }) => {
   return (
     <Layout data={data} location={location}>
       <section>
-        <h1>{title}</h1>
+        <h2>{title}</h2>
         <div className="blogpost"
           dangerouslySetInnerHTML={{__html: html}}
         />

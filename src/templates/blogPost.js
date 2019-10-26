@@ -1,24 +1,26 @@
 import React from 'react';
+import EnLayout from '../layouts/en.js';
+import RuLayout from '../layouts/ru.js';
 import { graphql, Link } from 'gatsby';
 
-import HeaderContainer from '../components/HeaderContainer';
-
-const Template = ({ data, pageContext }) => {
+const Template = ({ data, pageContext, location }) => {
   const { prev, next } = pageContext;
   const { markdownRemark } = data;
-  const { title } = markdownRemark.frontmatter;
+  const { title, lang } = markdownRemark.frontmatter;
   const { html } = markdownRemark;
+  const Layout = lang === 'ru' ? RuLayout : EnLayout;
 
   return (
-    <div>
-      { /* <HeaderContainer /> */ }
-      <h1>{title}</h1>
-      <div className="blogpost"
-        dangerouslySetInnerHTML={{__html: html}}
-      />
-      { prev && <Link to={prev.frontmatter.path} >prev</Link> }
-      { next && <Link to={next.frontmatter.path} >next</Link> }
-    </div>
+    <Layout data={data} location={location}>
+      <section>
+        <h1>{title}</h1>
+        <div className="blogpost"
+          dangerouslySetInnerHTML={{__html: html}}
+        />
+        { prev && <Link to={prev.frontmatter.path} >prev</Link> }
+        { next && <Link to={next.frontmatter.path} >next</Link> }
+      </section>
+    </Layout>
   );
 }
 
@@ -28,6 +30,7 @@ export const query = graphql`
       html
       frontmatter {
         title
+        lang
       }
     }
   }

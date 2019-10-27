@@ -8,6 +8,7 @@ const Header = ({ data, localeData }) => {
   const { title, description } = data.site.siteMetadata;
   const { langsMenu, homeLink } = localeData;
   const { about, portfolio, tags, mainHeading } = localeData.messages;
+  const aboutLink = `${homeLink}/about`;
 
   return (
     <header>
@@ -23,7 +24,7 @@ const Header = ({ data, localeData }) => {
           </Link>
         </div>
         <div className="nav-item">
-          <Link to='/' >
+          <Link to={aboutLink} >
             {about}
           </Link>
         </div>

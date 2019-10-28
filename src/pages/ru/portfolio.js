@@ -1,6 +1,6 @@
 import React from 'react';
 import RuLayout from '../../layouts/ru.js';
-import portfolioMessages from '../../data/about/ru.js';
+import portfolioMessages from '../../data/portfolio/ru.js';
 import PortfolioSection from '../../templates/PortfolioSection';
 
 const RuPortfolioPage = ({data, location}) => (

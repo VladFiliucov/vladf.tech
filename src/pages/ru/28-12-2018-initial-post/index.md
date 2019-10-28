@@ -3,7 +3,7 @@ path: "/ru/initial-post"
 date: "28/12/2018"
 title: "Initial Post"
 lang: "ru"
-tags: ['GatsbyJS', 'vladf', 'Vlad Filiucov']
+tags: ['гэтсби', 'Влад']
 excerpt: "Wellcome to Brave New Blog"
 ---
 

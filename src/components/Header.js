@@ -10,6 +10,7 @@ const Header = ({ data, localeData }) => {
   const { about, portfolio, tags, mainHeading } = localeData.messages;
   const aboutLink = `${homeLink}/about`;
   const portfolioLink = `${homeLink}/portfolio`;
+  const tagsLink = `${homeLink}/tags`;
 
   return (
     <header>
@@ -35,7 +36,7 @@ const Header = ({ data, localeData }) => {
           </Link>
         </div>
         <div className="nav-item">
-          <Link to='/tags' className="nav-item">
+          <Link to={tagsLink} className="nav-item">
             {tags}
           </Link>
         </div>

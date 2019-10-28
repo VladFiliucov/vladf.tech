@@ -4,42 +4,57 @@ const createTagPages = (createPage, posts) => {
   const allTagsIndexTemplate = path.resolve('src/templates/allTagsIndex.js');
   const singleTagTemplate = path.resolve('src/templates/singleTagIndex.js');
 
-  const postsByTag = {};
+  const postsByTag = {
+    "ru": {},
+    "en": {},
+  };
 
   posts.forEach(({node}) => {
     if (node.frontmatter.tags) {
       node.frontmatter.tags.forEach(tag => {
-        if (!postsByTag[tag]) {
-          postsByTag[tag] = [];
+        const lang = node.frontmatter.lang;
+
+        if (!postsByTag[lang][tag]) {
+          postsByTag[lang][tag] = [];
         }
 
-        postsByTag[tag].push(node);
+        postsByTag[lang][tag].push(node);
       })
     }
   });
 
-  const tags = Object.keys(postsByTag);
+  const ruTags = Object.keys(postsByTag.ru);
+  const enTags = Object.keys(postsByTag.en);
 
-  createPage({
-    path: '/tags',
-    component: allTagsIndexTemplate,
-    context: {
-      tags: tags.sort()
-    }
-  })
-
-  tags.forEach(tagName => {
-    const posts = postsByTag[tagName]
+  const createTagPageForLang = (tags, lang) => {
+    const prefix = lang === 'en' ? '/tags/' : '/ru/tags/'
 
     createPage({
-      path: `/tags/${tagName}`,
-      component: singleTagTemplate,
+      path: prefix,
+      component: allTagsIndexTemplate,
       context: {
-        posts,
-        tagName
+        tags: tags.sort(),
+        lang: lang,
       }
     })
-  })
+
+    tags.forEach(tagName => {
+      const posts = postsByTag[lang][tagName]
+
+      createPage({
+        path: `${prefix + tagName}`,
+        component: singleTagTemplate,
+        context: {
+          posts,
+          tagName,
+          lang,
+        }
+      })
+    })
+  }
+
+  createTagPageForLang(ruTags, 'ru');
+  createTagPageForLang(enTags, 'en');
 }
 
 exports.createPages = (({ graphql, actions }) => {
@@ -61,6 +76,7 @@ exports.createPages = (({ graphql, actions }) => {
                     path
                     title
                     tags
+                    lang
                   }
                 }
               }

@@ -9,6 +9,7 @@ const Header = ({ data, localeData }) => {
   const { langsMenu, homeLink } = localeData;
   const { about, portfolio, tags, mainHeading } = localeData.messages;
   const aboutLink = `${homeLink}/about`;
+  const portfolioLink = `${homeLink}/portfolio`;
 
   return (
     <header>
@@ -29,7 +30,7 @@ const Header = ({ data, localeData }) => {
           </Link>
         </div>
         <div className="nav-item">
-          <Link to='/portfolio' className="nav-item">
+          <Link to={portfolioLink} className="nav-item">
             {portfolio}
           </Link>
         </div>

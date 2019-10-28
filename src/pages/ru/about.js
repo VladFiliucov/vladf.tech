@@ -2,7 +2,6 @@ import React from 'react';
 import RuLayout from '../../layouts/ru.js';
 import aboutMessages from '../../data/about/ru.js';
 import AboutSection from '../../templates/AboutSection';
-console.log(aboutMessages);
 
 const RuAboutPage = ({data, location}) => (
   <RuLayout data={data} location={location}>

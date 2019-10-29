@@ -11,7 +11,8 @@ const EnHomePage = ({data, location}) => (
 export const query = graphql`
   query EnHomepageQuery {
     allMarkdownRemark (
-      sort: {order: DESC, fields: [frontmatter___date]}
+      sort: {order: DESC, fields: [frontmatter___date]},
+      filter: {frontmatter: {lang: {eq: "en"}}}
     ) {
       edges {
         node {

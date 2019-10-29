@@ -6,7 +6,7 @@ import './Header.css';
 
 const Header = ({ data, localeData }) => {
   const { title, description } = data.site.siteMetadata;
-  const { langsMenu, homeLink } = localeData;
+  const { langsMenu, homeLink, showLangs } = localeData;
   const { about, portfolio, tags, mainHeading } = localeData.messages;
   const aboutLink = `${homeLink}/about`;
   const portfolioLink = `${homeLink}/portfolio`;
@@ -42,7 +42,7 @@ const Header = ({ data, localeData }) => {
         </div>
       </nav>
       <h1>{mainHeading}</h1>
-      <SelectLanguage langs={langsMenu} />
+      <SelectLanguage langs={langsMenu} showLangs={showLangs} />
     </header>
   );
 };

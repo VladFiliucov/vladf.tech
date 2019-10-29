@@ -4,6 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import './SelectLanguage.css';
 
 const SelectLanguage = (props) => {
+  const { showLangs } = props;
   const links = props.langs.map(lang => {
     const enPage = lang.url.indexOf('/ru') == -1
     const homePage = (lang.url === '/' || lang.url === '/ru' || lang.url === '/ru/');
@@ -16,9 +17,15 @@ const SelectLanguage = (props) => {
     }
 
     return (
-      <Link to={address} key={lang.langKey} style={{
-        color: 'white',
-      }}>
+      <Link
+        title={showLangs ? `Switch language to ${lang.langKey}` : 'Switching language is not enabled on this page'}
+        to={address}
+        key={lang.langKey}
+        style={{
+          pointerEvents: showLangs ? '' : 'none',
+          color: 'white',
+        }}
+      >
         <li selected={lang.selected}>
           {lang.langKey}
         </li>

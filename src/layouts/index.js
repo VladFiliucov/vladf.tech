@@ -7,7 +7,7 @@ import { IntlProvider  } from 'react-intl';
 import { getCurrentLangKey, getLangs, getUrlForLang } from 'ptz-i18n';
 import './mainLayout.css';
 
-const Layout = ({location, i18nMessages, children}) => {
+const Layout = ({location, i18nMessages, children, showLangs = true}) => {
   return (
     <StaticQuery
       query={graphql`
@@ -47,6 +47,7 @@ const Layout = ({location, i18nMessages, children}) => {
                     messages={i18nMessages.header}
                     langsMenu={langsMenu}
                     homeLink={homeLink}
+                    showLangs={showLangs}
                   />
                   {children}
                   <Footer />

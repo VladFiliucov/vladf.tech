@@ -4,7 +4,7 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import Prism from 'prism-react-renderer/prism';
 (typeof global !== 'undefined' ? global : window).Prism = Prism;
 
-require('prismjs/components/prism-java');
+require('prismjs/components/prism-ruby');
 
 const exampleCodetwo = `
 (function someDemo() {
@@ -28,7 +28,7 @@ const Syntax = () => {
   return (
     <section>
       <h1>Syntax page</h1>
-      <Highlight {...defaultProps} code={exampleCode} language="python">
+      <Highlight {...defaultProps} code={exampleCode} language="ruby">
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <pre className={className} style={style}>
             {tokens.map((line, i) => (

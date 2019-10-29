@@ -84,23 +84,30 @@ exports.createPages = (({ graphql, actions }) => {
           }
         `
       ).then(result => {
-        const posts = result.data.allMarkdownRemark.edges;
+        const allPosts = result.data.allMarkdownRemark.edges;
+        const enPosts = allPosts.filter(({node}) => node.frontmatter.lang === 'en');
+        const ruPosts = allPosts.filter(({node}) => node.frontmatter.lang === 'ru');
 
-        createTagPages(createPage, posts)
+        createTagPages(createPage, allPosts)
 
-        posts.forEach(({node}, index) => {
-          const path = node.frontmatter.path;
+        const createPostPagesForLangs = posts => {
+          posts.forEach(({node}, index) => {
+            const path = node.frontmatter.path;
 
-          createPage({
-            path,
-            component: blogPostTemplate,
-            context: {
-              pathSlug: path,
-              prev: index === 0 ? null : posts[index - 1].node,
-              next: index === (posts.length - 1) ? null : posts[index + 1].node
-            }
+            createPage({
+              path,
+              component: blogPostTemplate,
+              context: {
+                pathSlug: path,
+                prev: index === 0 ? null : posts[index - 1].node,
+                next: index === (posts.length - 1) ? null : posts[index + 1].node
+              }
+            })
           })
-        })
+        }
+
+        createPostPagesForLangs(enPosts);
+        createPostPagesForLangs(ruPosts);
       })
       .catch(error => console.log(error))
     )

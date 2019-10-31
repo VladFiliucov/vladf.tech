@@ -67,7 +67,7 @@ exports.createPages = (({ graphql, actions }) => {
       graphql(
         `
           query {
-            allMarkdownRemark (
+            allMdx (
               sort: {order: ASC, fields: [frontmatter___date]}
             ) {
               edges {
@@ -84,7 +84,7 @@ exports.createPages = (({ graphql, actions }) => {
           }
         `
       ).then(result => {
-        const allPosts = result.data.allMarkdownRemark.edges;
+        const allPosts = result.data.allMdx.edges;
         const enPosts = allPosts.filter(({node}) => node.frontmatter.lang === 'en');
         const ruPosts = allPosts.filter(({node}) => node.frontmatter.lang === 'ru');
 

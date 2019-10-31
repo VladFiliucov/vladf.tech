@@ -12,17 +12,22 @@
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
   "dependencies": {
+    "@mdx-js/mdx": "^1.5.1",
+    "@mdx-js/react": "^1.5.1",
     "antd": "^3.23.5",
-    "intl": "^1.2.5",
     "gatsby": "^2.15.29",
+    "gatsby-mdx": "^1.0.0",
     "gatsby-plugin-antd": "^2.0.2",
     "gatsby-plugin-i18n": "^1.0.1",
+    "gatsby-plugin-mdx": "^1.0.55",
     "gatsby-source-filesystem": "^2.1.29",
-    "gatsby-transformer-remark": "^2.6.27",
+    "intl": "^1.2.5",
+    "prism-react-renderer": "^1.0.2",
+    "prismjs": "^1.17.1",
     "react": "^16.10.2",
-    "react-intl": "^2.8.0",
     "react-dom": "^16.10.2",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^5.2.1",
+    "react-intl": "^2.8.0"
   },
   "repository": {
     "type": "git",

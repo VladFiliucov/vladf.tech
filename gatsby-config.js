@@ -7,13 +7,18 @@ module.exports = {
     languages
   },
   plugins: [
-    `gatsby-transformer-remark`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `pages`,
         path: `${__dirname}/src/pages`
       }
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [`.mdx`, `.md`],
+      },
     },
     `gatsby-plugin-antd`,
     {

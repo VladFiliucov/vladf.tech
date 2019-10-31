@@ -2,21 +2,22 @@ import React from 'react';
 import EnLayout from '../layouts/en.js';
 import RuLayout from '../layouts/ru.js';
 import { graphql, Link } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 const Template = ({ data, pageContext, location }) => {
   const { prev, next } = pageContext;
-  const { markdownRemark } = data;
-  const { title, lang } = markdownRemark.frontmatter;
-  const { html } = markdownRemark;
+  const { mdx } = data;
+  const { title, lang } = mdx.frontmatter;
+  const { body } = mdx;
   const Layout = lang === 'ru' ? RuLayout : EnLayout;
 
   return (
     <Layout data={data} location={location}>
       <section>
         <h2>{title}</h2>
-        <div className="blogpost"
-          dangerouslySetInnerHTML={{__html: html}}
-        />
+        <div className="blogpost" >
+          <MDXRenderer>{body}</MDXRenderer>
+        </div>
         { prev && <Link to={prev.frontmatter.path} >prev</Link> }
         { next && <Link to={next.frontmatter.path} >next</Link> }
       </section>
@@ -26,8 +27,8 @@ const Template = ({ data, pageContext, location }) => {
 
 export const query = graphql`
   query($pathSlug: String!) {
-    markdownRemark(frontmatter: {path: { eq: $pathSlug }}) {
-      html
+    mdx(frontmatter: {path: { eq: $pathSlug }}) {
+      body
       frontmatter {
         title
         lang

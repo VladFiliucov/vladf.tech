@@ -4,13 +4,13 @@ import BlogList from '../templates/blogList';
 
 const EnHomePage = ({data, location}) => (
   <EnLayout data={data} location={location}>
-    <BlogList edges={data.allMarkdownRemark.edges} />
+    <BlogList edges={data.allMdx.edges} />
   </EnLayout>
 );
 
 export const query = graphql`
   query EnHomepageQuery {
-    allMarkdownRemark (
+    allMdx (
       sort: {order: DESC, fields: [frontmatter___date]},
       filter: {frontmatter: {lang: {eq: "en"}}}
     ) {

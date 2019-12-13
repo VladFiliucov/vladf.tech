@@ -29,5 +29,6 @@ module.exports = {
         prefixDefault: false,
       }
     },
+    `gatsby-plugin-csp`,
   ]
 };

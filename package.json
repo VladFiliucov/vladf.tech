@@ -7,7 +7,7 @@
   "scripts": {
     "develop": "gatsby develop",
     "start": "npm run develop",
-    "build": "gatsby build",
+    "build": "cp _headers public/ && gatsby build",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },

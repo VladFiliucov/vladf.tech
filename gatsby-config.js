@@ -12,6 +12,7 @@ module.exports = {
         path: `${__dirname}/src/pages`
       }
     },
-    `gatsby-plugin-antd`
+    `gatsby-plugin-antd`,
+    `gatsby-plugin-csp`
   ]
 };

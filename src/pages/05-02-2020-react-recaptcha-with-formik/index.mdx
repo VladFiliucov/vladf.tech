@@ -1,11 +1,89 @@
 ---
 path: "/react-recaptcha-with-formik"
-date: "06/02/2020"
+date: "08/02/2020"
 title: "Invisible recaptcha with Formik"
 lang: "en"
 tags: ['GatsbyJS', 'formik', 'react', 'recaptcha', 'google-recaptcha']
 excerpt: "Adding invisible recaptcha using Formik"
 ---
+
+Recently I had to add invisible google captcha to few [React](https://reactjs.org/) forms. We are using [react hooks](https://reactjs.org/docs/hooks-intro.html) over class components and [Formik](https://jaredpalmer.com/formik/) to handle all the forms boilerplate. To my surprise I found less results online than expected. First I decided to use libraries from first results of google search ([react-recaptcha](https://github.com/appleboy/react-recaptcha) and [react-google-recaptcha](https://github.com/dozoisch/react-google-recaptcha)). But when I was passing in ref built using __useRef__ hook instead of older implementation of refs - nothing was happening. Going through issues on Github I noticed that I wasn't [the only one having this problem](https://github.com/appleboy/react-recaptcha/issues/252). It turned out that packages above handle recaptcha callbacks in the non-react way. Further search took me to [reaptcha](https://github.com/sarneeh/reaptcha) package, that promised to solve problems I was getting. 
+
+- First we will need to create google recaptcha site. You can do it [here](https://www.google.com/recaptcha/admin/create). (Note that you need google account for this)
+- Add dependencies. Yes, there is no typo in captcha package name (in case you skipped intro, here is [reaptcha repo](https://github.com/sarneeh/reaptcha))
+
+```js
+
+  yarn add formik reaptcha
+```
+- Next we want to import dependencies. We are going to need `useState` from react to store the state of the form (submitted or not). `useRef` to execute callback on recaptcha instanse in actual dom element, as we can't use virtual dom for this. Formik so we don't have to re-implement a lot of form boilerplate. And Reaptcha component we are going to use in the form.
+
+```js
+
+  import React, { useRef, useState } from 'react';
+  import Reaptcha from 'reaptcha';
+  import { Formik } from 'formik';
+```
+
+- Now let's create form component. Initialise ref and make sure form is not in `submitted` state by default.
+```js
+
+  const RecaptchaForm = () => {
+    const recaptchaRef = useRef(null);
+    const [formSubmitted, setFormSubmitted] = useState(false);
+
+  ...
+```
+
+- Let's start with a callback that is going to submit the form. We are just going to display form values in alert. `setSubmitting` argument is Fromik's callback that is set to true while form is being submitted. Using it we'll be able to disable submit button, to prevent's multiple submissions. In most cases we would execute it when we recieved response from server, but for this example - let's keep it simple.
+
+```js
+
+  const submitForm = (values, token, setSubmitting) => {
+    const payload = {...values, recaptcha: token }
+
+    alert(JSON.stringify(payload, null, 2));
+    // Form is submitted, so let's reflect it in
+    // form state, so we can show confirmation
+    // message to user
+    setSubmitting(false);
+    setFormSubmitted(true);
+  };
+
+```
+
+- If the form is submitted let's return confirmation early
+
+```js
+
+  if (formSubmitted) return <div>Submitted</div>;
+```
+
+- Let's use our Formik component. To keep this short we are going to have just email field
+
+```js
+
+  return (
+    <Formik
+      // We need to provide here object with
+      // default values of fields for validation
+      initialValues={{ email: ''  }}
+      // Formik will call validation callback when fields
+      // are already visited. When form is submitted all
+      // fields are marked as visited (or dirty)
+      validate={values => {
+        const errors = {};
+        if (!values.email) {
+          errors.email = 'Required';
+        }
+
+        return errors;
+      }}
+      onSubmit={values => {
+        recaptchaRef.current.execute();
+      }}
+    >
+```
 
 import RecaptchaForm from '../../components/Forms/RecaptchaForm'
 

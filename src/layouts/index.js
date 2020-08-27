@@ -29,7 +29,10 @@ const Layout = ({location, i18nMessages, children, showLangs = true}) => {
           const langKey = getCurrentLangKey(langs, defaultLangKey, url);
           const homeLink = `/${langKey}`.replace(`/${defaultLangKey}`, '');
           const langsMenu = getLangs(langs, langKey, getUrlForLang(homeLink, url))
-            .map((item) => ({ ...item, link: item.link.replace(`/${defaultLangKey}/`, ''), url: url}));
+            .map((item) => {
+              const sanitizedLink = item.link.replace(`/${defaultLangKey}/`, '').replace('//', '/');
+              return ({ ...item, link: sanitizedLink, url: url})
+            })
 
           return (
             <IntlProvider

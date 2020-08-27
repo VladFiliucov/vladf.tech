@@ -7,6 +7,7 @@ import './Header.css';
 const Header = ({ data, localeData }) => {
   const { title, description } = data.site.siteMetadata;
   const { langsMenu, homeLink, showLangs } = localeData;
+  const rootAddress = homeLink === '' ? '/' : homeLink;
   const { about, portfolio, tags, mainHeading } = localeData.messages;
   const aboutLink = `${homeLink}/about`;
   const portfolioLink = `${homeLink}/portfolio`;
@@ -16,10 +17,10 @@ const Header = ({ data, localeData }) => {
     <header>
       <nav>
         <div className="logo nav-item">
-          <Link to={homeLink} >
+          <Link to={rootAddress} >
             <img src={letterV} alt="Vlad Filiucov logo" />
           </Link>
-          <Link to={homeLink} className='pagetitlelink'>
+          <Link to={rootAddress} className='pagetitlelink'>
             <span>
               VLADF
             </span>

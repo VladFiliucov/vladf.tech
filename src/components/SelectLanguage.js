@@ -19,7 +19,7 @@ const SelectLanguage = (props) => {
     return (
       <Link
         title={showLangs ? `Switch language to ${lang.langKey}` : 'Switching language is not enabled on this page'}
-        to={address}
+        to={address.replace('//', '/')}
         key={lang.langKey}
         style={{
           pointerEvents: showLangs ? '' : 'none',

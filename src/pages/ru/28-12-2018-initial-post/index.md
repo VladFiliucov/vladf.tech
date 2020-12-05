@@ -1,10 +1,10 @@
 ---
 path: "/ru/initial-post"
 date: "28/12/2018"
-title: "Initial Post"
+title: "Первый пост"
 lang: "ru"
 tags: ['гэтсби', 'Влад']
-excerpt: "Wellcome to Brave New Blog"
+excerpt: "Добро пожаловать"
 ---
 
 ## Бравый новый блог

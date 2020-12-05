@@ -9,4 +9,8 @@ excerpt: "Wellcome to Brave New Blog"
 
 ## Brave New Blog
 
+Testing image optimisation
+
+![Local image](./logo.jpg)
+
 Coming soon...

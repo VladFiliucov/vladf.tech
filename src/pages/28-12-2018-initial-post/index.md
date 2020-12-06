@@ -5,6 +5,7 @@ title: "Initial Post"
 lang: "en"
 tags: ['GatsbyJS', 'vladf', 'Vlad Filiucov']
 excerpt: "Wellcome to Brave New Blog"
+remoteimage: "https://image.shutterstock.com/z/stock-photo-cropped-image-of-handsome-young-man-with-labrador-outdoors-man-on-a-green-grass-with-dog-708732331.jpg"
 ---
 
 ## Brave New Blog

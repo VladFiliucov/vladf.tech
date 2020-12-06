@@ -31,6 +31,13 @@ module.exports = {
         ]
       },
     },
+    {
+      resolve: `gatsby-plugin-remote-images`,
+      options: {
+        nodeType: 'Mdx',
+        imagePath: 'frontmatter.remoteimage',
+      },
+    },
     `gatsby-plugin-antd`,
     {
       resolve: 'gatsby-plugin-i18n',

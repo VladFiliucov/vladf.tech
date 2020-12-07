@@ -77,7 +77,6 @@ exports.createPages = (({ graphql, actions }) => {
                     title
                     tags
                     lang
-                    remoteimage
                   }
                 }
               }

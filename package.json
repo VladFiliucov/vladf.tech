@@ -26,6 +26,7 @@
     "gatsby-source-filesystem": "^2.1.29",
     "gatsby-transformer-sharp": "^2.8.0",
     "intl": "^1.2.5",
+    "isomorphic-fetch": "^3.0.0",
     "prism-react-renderer": "^1.0.2",
     "prismjs": "^1.17.1",
     "react": "^16.10.2",

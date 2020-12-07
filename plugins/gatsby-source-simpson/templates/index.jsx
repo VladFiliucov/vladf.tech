@@ -1,11 +1,18 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 
-const Template = ({ data, pageContext, location }) => {
-  console.log(data, pageContext);
+const Template = ({ data: { allSimpson } }) => {
   return (
     <div>
-      yo
+      {allSimpson.edges.map(simpson => {
+          console.log(simpson.node);
+        return (
+          <div>
+            <h2>{simpson.node.name}</h2>
+            <img src={simpson.node.thumbnailUrl} />
+          </div>
+        )
+      })}
     </div>
   );
 }

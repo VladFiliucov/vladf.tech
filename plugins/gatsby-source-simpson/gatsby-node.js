@@ -1,4 +1,5 @@
 const fetch = require('isomorphic-fetch');
+const path = require('path');
 
 async function pokemonToNode({ actions, createNodeId, createContentDigest }) {
   const response = await fetch('https://sampleapis.com/simpsons/api/episodes', {
@@ -7,7 +8,7 @@ async function pokemonToNode({ actions, createNodeId, createContentDigest }) {
     },
   })
   const simps = await response.json();
-  const simpsons = simps.slice(0, 10);
+  const simpsons = simps.slice(3, 13);
   simpsons.forEach(simpson => {
     const nodeMeta = {
       id: createNodeId(`simpson-${simpson.season}-${simpson.episode}`),
@@ -25,4 +26,15 @@ async function pokemonToNode({ actions, createNodeId, createContentDigest }) {
 
 exports.sourceNodes = async props => {
   await Promise.all([pokemonToNode(props)]);
+}
+
+exports.createPages = async ({ actions: { createPage } }) => {
+  createPage({
+    path: 'simpsons',
+    component: path.resolve(`${__dirname}/templates/index.jsx`),
+    context: {
+      slug: 'simpsons',
+      uriPath: 'simpsons',
+    },
+  })
 }

@@ -1,15 +1,16 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
+import Img from "gatsby-image";
 
 const Template = ({ data: { allSimpson } }) => {
   return (
     <div>
       {allSimpson.edges.map(simpson => {
-          console.log(simpson.node);
+          console.log(simpson.node.thumbnail.childImageSharp.fluid);
         return (
           <div>
             <h2>{simpson.node.name}</h2>
-            <img src={simpson.node.thumbnailUrl} />
+            <Img fluid={simpson.node.thumbnail.childImageSharp.fluid} />
           </div>
         )
       })}
@@ -22,6 +23,14 @@ export const query = graphql`
     allSimpson {
       edges {
         node {
+          thumbnail {
+            childImageSharp {
+              id
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
           episode
           name
           thumbnailUrl

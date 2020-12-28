@@ -4504,6 +4504,13 @@ css-loader@^1.0.1:
     postcss-value-parser "^3.3.0"
     source-list-map "^2.0.0"
 
+css-paint-polyfill@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/css-paint-polyfill/-/css-paint-polyfill-2.0.0.tgz#8fc65083a29a2de90e5bcdf6de3849bb18d40615"
+  integrity sha512-eQmQVj6+YAyjxuqWdv/t67yUnlwSSfw0MQRCaxF5wgd1Oq6PpcHzm9exU+xkF6m8GaTla15yveXFrxB4i8xZHA==
+  dependencies:
+    transpiler-lite "git+https://gist.github.com/781ef9620da8a30228b9f0c6e21fa7f6.git"
+
 css-select-base-adapter@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/css-select-base-adapter/-/css-select-base-adapter-0.1.1.tgz#3b2ff4972cc362ab88561507a95408a1432135d7"
@@ -7742,6 +7749,11 @@ hosted-git-info@^3.0.6:
   integrity sha512-fWqc0IcuXs+BmE9orLDyVykAG9GJtGLGuZAAqgcckPgv5xad4AcXGIv8galtQvlwutxSlaMcdw7BUtq2EIvqCQ==
   dependencies:
     lru-cache "^6.0.0"
+
+houdini-static-gradient@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/houdini-static-gradient/-/houdini-static-gradient-1.1.2.tgz#ba2ef17e07148686f9d13e217734b2e36564b45e"
+  integrity sha512-34g4Fh2fDDNNPAb3UZj7m/8NKx6W1FnbxrLG0exW3qHRyS2UeE1D2+Mr2eM9cEL+rDNfeiJ01sDgCmE2RagIlg==
 
 hpack.js@^2.1.6:
   version "2.1.6"
@@ -14864,6 +14876,10 @@ tough-cookie@~2.5.0:
   dependencies:
     psl "^1.1.28"
     punycode "^2.1.1"
+
+"transpiler-lite@git+https://gist.github.com/781ef9620da8a30228b9f0c6e21fa7f6.git":
+  version "2.0.2"
+  resolved "git+https://gist.github.com/781ef9620da8a30228b9f0c6e21fa7f6.git#9af8e1c86e5e22efc58129337528617fea5eea6f"
 
 trim-lines@^1.0.0:
   version "1.1.3"

@@ -1,0 +1,8 @@
+.container {
+  height: 100vh;
+  background-size: cover;
+  --static-gradient-direction: to-top;
+  --static-gradient-color: teal;
+  --static-gradient-size: 2;
+  background: paint(static-gradient);
+}

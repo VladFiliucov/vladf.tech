@@ -1,8 +1,0 @@
-[[redirects]]
-  from = "/playgrounds/houdini/"
-  to = "https://5ff0c569634a3b30691293e6--elated-blackwell-896b5a.netlify.app/"
-  status = 200
-  force = true
-  [redirects.headers]
-    X-From = "Netlify"
-    X-Api-Key = "some-api-key-string"

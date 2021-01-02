@@ -7,6 +7,7 @@ module.exports = {
     languages
   },
   plugins: [
+    `gatsby-plugin-netlify`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-remark-images`,

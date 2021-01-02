@@ -7,11 +7,16 @@ module.exports = {
     languages
   },
   plugins: [
-    `gatsby-plugin-netlify`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-remark-images`,
     `gatsby-source-simpson`,
+    {
+      resolve: `gatsby-plugin-netlify`,
+      options: {
+        generateMatchPathRewrites: false,
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

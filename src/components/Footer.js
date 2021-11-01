@@ -4,7 +4,7 @@ import './Footer.css';
 const Footer = () => (
   <footer>
     <p>
-      &copy; Vlad Filiucov 2020
+      &copy; Vlad Filiucov 2021
     </p>
   </footer>
 );

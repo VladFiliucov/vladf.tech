@@ -4,6 +4,6 @@ module.exports = {
     about: 'About',
     portfolio: 'Portfolio',
     tags: 'Tags',
-    mainHeading: 'Tech journey to senior engineer'
+    mainHeading: 'Tech journey'
   }
 };

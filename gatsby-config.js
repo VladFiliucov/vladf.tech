@@ -11,7 +11,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-remark-images`,
-    `gatsby-source-simpson`,
+    // `gatsby-source-simpson`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {

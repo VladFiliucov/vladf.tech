@@ -11,6 +11,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-remark-images`,
+    `gatsby-plugin-react-helmet`,
     // `gatsby-source-simpson`,
     {
       resolve: `gatsby-source-filesystem`,

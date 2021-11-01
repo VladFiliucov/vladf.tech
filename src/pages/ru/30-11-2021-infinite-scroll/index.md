@@ -1,10 +1,10 @@
 ---
 path: "/ru/infinite-scroll"
 date: "30/11/2021"
-title: "How to create infinite scroll using Ruby on Rails"
+title: "Как создать бесконечный скролл используя Rails"
 lang: "ru"
 tags: ['rails', 'ruby', 'infinite-scroll', 'intersection-observer', 'stimulus', 'vladf', 'Vlad Filiucov']
-excerpt: "Infinite scroll using Ruby on Rails"
+excerpt: "Бесконечный скролл на Ruby on Rails"
 ---
 
 ![Infinity image](./infinity.jpg)

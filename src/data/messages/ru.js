@@ -4,6 +4,6 @@ module.exports = {
     about: 'Обо мне',
     portfolio: 'Портфолио',
     tags: 'Тэги',
-    mainHeading: 'Тех путешествие к синьер инжинеру',
+    mainHeading: 'Тех путешествие',
   }
 };

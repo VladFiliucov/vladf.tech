@@ -3,6 +3,7 @@ import EnLayout from '../layouts/en.js';
 import RuLayout from '../layouts/ru.js';
 import { graphql, Link } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
+import Metadata from '../components/Metadata';
 
 const Template = ({ data, pageContext, location }) => {
   const { prev, next } = pageContext;
@@ -13,6 +14,7 @@ const Template = ({ data, pageContext, location }) => {
 
   return (
     <Layout data={data} location={location}>
+      <Metadata title={title} />
       <section>
         <h2>{title}</h2>
         <div className="blogpost" >

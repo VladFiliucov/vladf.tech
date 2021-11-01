@@ -1,11 +1,17 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+// import { Helmet } from 'react-helmet';
 import HeaderContainer from '../components/HeaderContainer';
 import Footer from '../components/Footer';
 import { graphql, StaticQuery } from 'gatsby';
 import { IntlProvider  } from 'react-intl';
 import { getCurrentLangKey, getLangs, getUrlForLang } from 'ptz-i18n';
 import './mainLayout.css';
+
+//<Helmet>
+//  <meta charSet="utf-8" />
+//  <title>Filiucov's personal blog</title>
+//  <link rel="canonical" href="http://vladf.tech" />
+//</Helmet>
 
 const Layout = ({location, i18nMessages, children, showLangs = true}) => {
   return (
@@ -40,11 +46,6 @@ const Layout = ({location, i18nMessages, children, showLangs = true}) => {
               messages={i18nMessages}
             >
               <div>
-                <Helmet>
-                  <meta charSet="utf-8" />
-                  <title>Filiucov's personal blog</title>
-                  <link rel="canonical" href="http://vladf.tech" />
-                </Helmet>
                 <div className='main-container'>
                   <HeaderContainer
                     messages={i18nMessages.header}

@@ -13,6 +13,8 @@ module.exports = {
     `gatsby-remark-images`,
     `gatsby-plugin-react-helmet`,
     // `gatsby-source-simpson`,
+    // add sitemap
+    // add robots.txt
     {
       resolve: `gatsby-source-filesystem`,
       options: {

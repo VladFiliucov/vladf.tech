@@ -11,54 +11,54 @@ excerpt: "Бесконечный скролл на Ruby on Rails"
 
 ## Бесконечный скролл
 
-Was scrolling some social media feed and suddenly had a thought about how could I implement it if asked tomorrow. Made a note to give it a try in next level-up time slot. And fast forward - here we are. Writing down my variant and some thoughts on improvement. Level-up time was allocated for Rails - hence the technology choise.
+Недавно скроллил ленту соцсети и задумался, как бы я реализовал бесконечный скролл если бы завтра возникла такая задача. Оставил заметку попробовать в следующий промежуток времени выделенный на обучение. Записываю свой вариант и мысли по дальнейшему улучшению. Обучение было посвещено Rails - отсюда и выбор технологий.
 
-### So what is infinite/continues scroll?
+### Что же такое бесконечный/непрерывный скролл?
 
-According to [ui-patterns website](http://ui-patterns.com/patterns/ContinuousScrolling) problem is:
+Как говорит вебсайт [ui-patterns](http://ui-patterns.com/patterns/ContinuousScrolling) решаемая проблема:
 
-> The user needs to view a subset of data that is not easily displayed on a single page Content needs to be presented to users as a subset of a much larger seemingly endless set, in a way that will aid them in consuming content without effort.
+> Пользователю нужно увидеть подмножество данных, которые не легко вывести но одной странице. Контент должен быть представлен пользователям как гораздо больший, кажущийся бесконечным набор данных, который можно потреблять не прилагая усилий.
 
-And it's supposed to be used when
-- there are more data to show than what would fit on a normal page
-- navigating to a second page of data takes away too much attention from the content
+Испрользовать когда:
+- Данных больше, чем помещается на обычной странице.
+- Навигация на следующую страницу отнимает слишком много внимания от контента.
 
-### Versions used:
+### Используемые версии
 
- - Rails version 6.1
+ - Ruby on Rails 6.1
  - Stimulus 3.0.1
 
-### Data setup:
+### Подготовка данных:
 
-Spin up a rails app with DB. If you already have data that you want to display paginated - use it. If not - let's create posts scaffold. In terminal:
+Создайте приложение на Rails и настройте базу данных. Создаем скафолд со статьями, но если у Вас уже есть таблица в базе - используйте ее. В терминале:
 
 ```bash
 
 $ rails g scaffold Post name:string title:string content:text && rails db:migrate RAILS_ENV=development
 ```
-This will create table in database that has `name`, `title` and `content`.
+Это создало таблицу в базе данных с полями `name`, `title` и `content`.
 
-Now let's create a bunch of entries so we have something to apply infinite scroll to. Open up rails console
+Теперь давайте создадим записи в базе, что-бы нам было через что скролить. Откройте Rails консоль
 
 ```bash
 
 $ rails c
 ```
 
-and generate large enough number of entries
+и сгенерируйте достаточне количество записей
 
 ```ruby
 
 > 100.times { |idx| Post.create(name: 'My post', title: idx, content: "post number #{idx + 1}") }
 ```
 
-### View setup:
+### Подготовка видов:
 
-Now let's create posts partial
+Создадим паршал (partial) постов
 
 > app/views/posts/_posts.html.erb
 
-And render posts inside
+И выведем посты
 
 ```ruby
 
@@ -74,7 +74,7 @@ And render posts inside
 <% end %>
 ```
 
-And let's render this partial inside index view
+Подключим паршал в вид индекс
 
 > app/views/posts/index.html.erb
 
@@ -86,6 +86,9 @@ And let's render this partial inside index view
 Note that this works thanks to instance variable setting that scaffold generator did for us in posts_controller.
 Now let's make each post entry take a bit more space on the screen. Note that "post-div" css class in partial. Let's add some height and border to it.
 
+Уточню, что это работает благодаря инстанс переменным, которые скафолд установил для нас в posts_controller.
+Теперь изменим посты что-б каждый пост занимал больше места на экране. Обратите внимание "post-div" css-класс, который мы добавили в паршале. Добавим классу высоты и рамку.
+
 >  app/assets/stylesheets/application.scss
 
 ```css
@@ -96,11 +99,11 @@ Now let's make each post entry take a bit more space on the screen. Note that "p
 }
 ```
 
-...that's ugly. But styling is out of scope here so let's move on.
+...уродливо. Но мы не стилизацией пришли сюда заниматся, так-что продолжим.
 
-### Data chuncking:
+### "Пачкование" или "кучкование" данных:
 
-So what's next? Well now we are rendering all the posts at once but infinite scroll is supposed to be loading posts in chuncks. One way we can get that scoping for posts is by using pagination. So let's jump to the Gemfile and add a [Pagy](https://github.com/ddnexus/pagy) pagination gem.
+Что дальше? Сейчас мы выводим все посты разом, но для бесконечного срколла нам нужно выводить их пачками. Один из способов сгрупировать посты это использовать пагинацию. Откроем Гемфайл и добваим гем [Pagy](https://github.com/ddnexus/pagy) реализующий пагинацию.
 
 > Gemfile
 
@@ -109,14 +112,14 @@ So what's next? Well now we are rendering all the posts at once but infinite scr
 gem "pagy", "~> 3.5"
 ```
 
-and install gem. In terminal run:
+и установим гем. В терминале введем:
 
 ```bash
 
 $ bundle install
 ```
 
-And use it in posts controller
+и подключем гем в контроллере постов
 
 > app/controllers/posts_controller.rb
 
@@ -131,7 +134,7 @@ class PostsController < ApplicationController
   end
 ```
 
-and in view file
+и во вью
 
 > app/views/posts/index.html.erb
 
@@ -140,11 +143,11 @@ and in view file
 <%== pagy_nav(@pagy) %>
 ```
 
-So now if we go back to our view - posts are paginated.
+Если мы взглянем на страницу постами сейчас - посты выводятся с пагинацией.
 
-### Connect JavaScript
+### Подключем JavaScript
 
-We've arranged all the data, now we want to load more posts - without reloading the page. So it's javascript time. Let's setup stimulus so we store all infinite scroll logic in stimulus controller. So head over to terminal and run:
+Мы подготовиди данные и теперь хотим подгружать больше постов без перезагрузки страницы. Значит пришло время джава скрипта. Давайте настроим Стимулус и поместим всю логику бесконечного скрола в стимулус контроллер. В терминале:
 
 ```bash
 
@@ -153,9 +156,9 @@ We've arranged all the data, now we want to load more posts - without reloading 
 > bundle exec rails webpacker:install:stimulus
 ```
 
-This will generate "app/javascript/controllers/" directory for us and wire up js setup.
+Это сегенерирует "app/javascript/controllers/" директорию и подключит джаваскрипт к приложению.
 
-Now let's connect js controller that we haven't created yet to our view.
+Подключим джавасриптовый контроллер, который мы еще не создали к вью.
 
 > app/views/posts/index.html.erb
 
@@ -172,7 +175,7 @@ Now let's connect js controller that we haven't created yet to our view.
 </div>
 ```
 
-and boilerplate for controller. In js controller directory create "infinite_scroll_controller"
+Подготовительный код для контроллера. В директории джавасриптовых контроллеров создайте "infinite_scroll_controller"
 
 > app/javascript/controllers/infinite_scroll_controller.js
 
@@ -187,11 +190,11 @@ export default class extends Controller {
 }
 ```
 
-### When should we load more posts?
+### Когда нам подгружать больше постов?
 
-In first implementation I used scroll event and calcualted if last post is in view from window view. But that was firing a lot of event with some complex computations. Obviously we should be optimising only when someone is really feeling the pain (and that def not the case here). But for learning experience I went a bit further and decided to look if footer is in view (as that's probably moment when we want to load more posts). And picked [Intersection observer](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) to watch footer for me. If you are supporting older browsers you might need a polyfill to get it working as it will probably never be supported at least in IE.
+В первой реализации я использовал браузерное событие скролла и подсчитывал если последний пост бы в области видимости. Это добавляло частые, относительно сложные вычисления. Само собой, нам следует оптимизировать только когда, кто-то ощущает эту "боль". В целях обучения я пошел чуть дальше и начал проверять если подвал сейта в области видимости, так-как скорее всего это момент, когда нужно подгрузить еще постов и заменил вычисления на [Intersection observer](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API). Если Вы поддерживаете старые браузеры - Вам понадобится полифил - т.к обзервер никогда не будет поддерживаться, например, в том-же IE.
 
-So, let's go to our layout, and create a main section and sticky footer so it's always at the botom.
+В главном лэйауте создадим подвал сайта "приклеинный" ко дну страницы.
 
 ```ruby
 
@@ -206,7 +209,7 @@ So, let's go to our layout, and create a main section and sticky footer so it's 
   </body>
 ```
 
-And make it sticky using css
+"приклеим" его используя css
 
 > app/assets/stylesheets/application.scss
 
@@ -222,7 +225,7 @@ footer {
 }
 ```
 
-### Infinite scroll time wooooo:
+### Время бесконечного скролла:
 
 So now we want to setup our controller. Here is code. Let's break it down
 

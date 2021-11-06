@@ -294,7 +294,7 @@ And last step is connecting backend to our "loadMore" function. So lets head to 
   end
 ```
 
-So if requests is for html format - we return server side generated page as normal. If request is for JSON format (aka our async loadData function) - we return posts partial as as string and provide updated pagincation context.
+So if requests is for html format - we return server side generated page as normal. If request is for JSON format (aka our async loadData function) - we return posts partial as string and provide updated pagincation context.
 
 That's it. Infinite scroll should be working now when footer is in the view. Newly loaded posts push footer out of view, and we have to scroll to the bottom to request more posts.
 

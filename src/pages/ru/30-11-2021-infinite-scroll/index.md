@@ -227,7 +227,7 @@ footer {
 
 ### Время бесконечного скролла:
 
-So now we want to setup our controller. Here is code. Let's break it down
+Теперь настроим контроллер. Вот код. Резберемся
 
 > app/javascript/controllers/infinite_scroll_controller.js
 
@@ -271,12 +271,12 @@ export default class extends Controller {
 }
 ```
 
-1. In "initialize" function we're finding footer component and connecting intersction observer to the page.
-1. "connect" and "disconnect" are telling intersection observer to watch and unwatch footer.
-1. "processIntersectionEntries" is checking if footer got into view. If it did - it finds link to next page (rel "next" attribute is something that [Pagy](https://github.com/ddnexus/pagy) gives us) and supplies next page link to "loadMore"  function.
-1. "loadMore" function makes an async request to the same page, but requests response in json format. If it got more data it appends new data to end of currently displayed posts and updates pagination navigation state.
+1. В функции "initialize" мы находим подвал сайта и подключаем обзервер к странице.
+1. "connect" и "disconnect" говорят обзерверу следить/не следить за подвалом.
+1. "processIntersectionEntries" проверят если подвал попал в область видимости. Если попал - функция находит ссылку на следующую стрницу посредством атрибута rel "next" предоставляемым гемом [Pagy](https://github.com/ddnexus/pagy) и передает ссылку на следующую страницу в функцию "loadMore".
+1. Функция "loadMore" выполняет асинхронный запрос на текущую страницу только в формате JSON. Если в ответе пришли еще данные - они добавляются в конец уже отображенных постов, и обнавляются ссылки пагинации.
 
-And last step is connecting backend to our "loadMore" function. So lets head to our posts_controller index action:
+Последний шаг - подключение бэкэнда к функции "loadMore". Направимся в posts_controller#index и добавим:
 
 > app/controllers/posts_controller.rb
 
@@ -297,12 +297,12 @@ And last step is connecting backend to our "loadMore" function. So lets head to 
   end
 ```
 
-So if requests is for html format - we return server side generated page as normal. If request is for JSON format (aka our async loadData function) - we return posts partial as as string and provide updated pagincation context.
+Таким образом, если запрос приходит на формат html мы возвращаем обычную страниу, а если запрос приходит на формат JSON - возвращаем содержимое нового паршала постов html строкой.
 
-That's it. Infinite scroll should be working now when footer is in the view. Newly loaded posts push footer out of view, and we have to scroll to the bottom to request more posts.
+На этом все. Бесконечный скролл теперь должен отрабатывать, если подвал сайта попадает в область видимости. Подгруженые посты выталкивают подвал из области видимости и можно дальше скролить вниз.
 
-### Next steps:
+### Следующие шаги:
 
-I stopped here - but next step to further optimize it could be removing initial posts as we move further down the page. As having large DOM will get expensive to user quickly.
+Я остановился на этом - но можно оптимизировать дальше, например, удаляя уже показанные посты. Иначе ДОМ разрастется и страница начнет подтормаживать ухудшая пользовательсктй опыт.
 
-Thank you for reading. Happy hacking :)
+Спасибо, что дочитали. Happy hacking :)

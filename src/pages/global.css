@@ -1,31 +1,31 @@
-html, body, #___gatsby {
-  height: 100%;
-}
+/* html, body, #___gatsby { */
+/*   height: 100%; */
+/* } */
 
-@font-face {
-  font-family: "Poppins";
-  src: url("../../static/assets/fonts/Poppins-Medium.ttf");
-}
+/* @font-face { */
+/*   font-family: "Poppins"; */
+/*   src: url("../../static/assets/fonts/Poppins-Medium.ttf"); */
+/* } */
 
-@font-face {
-  font-family: "Poppins-Italic";
-  src: url("../../static/assets/fonts/Poppins-MediumItalic.ttf");
-}
+/* @font-face { */
+/*   font-family: "Poppins-Italic"; */
+/*   src: url("../../static/assets/fonts/Poppins-MediumItalic.ttf"); */
+/* } */
 
-body {
-  margin: 0px;
-}
+/* body { */
+/*   margin: 0px; */
+/* } */
 
-div[role="group"][tabindex] {
-  height: 100%;
-}
+/* div[role="group"][tabindex] { */
+/*   height: 100%; */
+/* } */
 
-p {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 400;
-  letter-spacing: 0.12px;
-}
+/* p { */
+/*   font-family: 'Poppins', sans-serif; */
+/*   font-weight: 400; */
+/*   letter-spacing: 0.12px; */
+/* } */
 
-h1 {
-  font-family: 'Poppins-Italic', sans-serif;
-}
+/* h1 { */
+/*   font-family: 'Poppins-Italic', sans-serif; */
+/* } */

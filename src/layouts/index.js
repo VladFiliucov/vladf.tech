@@ -4,6 +4,7 @@ import HeaderContainer from '../components/HeaderContainer';
 import Footer from '../components/Footer';
 import { graphql, StaticQuery } from 'gatsby';
 import { IntlProvider  } from 'react-intl';
+import { ChakraProvider } from "@chakra-ui/react"
 import { getCurrentLangKey, getLangs, getUrlForLang } from 'ptz-i18n';
 import './mainLayout.css';
 
@@ -45,7 +46,7 @@ const Layout = ({location, i18nMessages, children, showLangs = true}) => {
               locale={langKey}
               messages={i18nMessages}
             >
-              <div>
+              <ChakraProvider>
                 <div className='main-container'>
                   <HeaderContainer
                     messages={i18nMessages.header}
@@ -56,7 +57,7 @@ const Layout = ({location, i18nMessages, children, showLangs = true}) => {
                   {children}
                   <Footer />
                 </div>
-              </div>
+              </ChakraProvider>
             </IntlProvider>
           )
         }

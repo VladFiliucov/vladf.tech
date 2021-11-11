@@ -47,16 +47,14 @@ const Layout = ({location, i18nMessages, children, showLangs = true}) => {
               messages={i18nMessages}
             >
               <ChakraProvider>
-                <div className='main-container'>
-                  <HeaderContainer
-                    messages={i18nMessages.header}
-                    langsMenu={langsMenu}
-                    homeLink={homeLink}
-                    showLangs={showLangs}
-                  />
-                  {children}
-                  <Footer />
-                </div>
+                <HeaderContainer
+                  messages={i18nMessages.header}
+                  langsMenu={langsMenu}
+                  homeLink={homeLink}
+                  showLangs={showLangs}
+                />
+                {children}
+                <Footer />
               </ChakraProvider>
             </IntlProvider>
           )

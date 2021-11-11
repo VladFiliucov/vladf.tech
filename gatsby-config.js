@@ -12,6 +12,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-remark-images`,
     `gatsby-plugin-react-helmet`,
+    `@chakra-ui/gatsby-plugin`,
     // `gatsby-source-simpson`,
     // add sitemap
     // add robots.txt
